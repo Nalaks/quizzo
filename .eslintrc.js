@@ -31,5 +31,7 @@ module.exports = {
     'no-plusplus': 'off',
     'import/prefer-default-export': 'off',
     'no-console': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn'],
   },
 }

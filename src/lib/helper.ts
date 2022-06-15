@@ -1,3 +1,5 @@
+import { QuizCategory, QuizDifficulty } from '../types/types'
+
 export const shuffle = (array: any[]) => {
   const newArray = [...array]
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -6,3 +8,17 @@ export const shuffle = (array: any[]) => {
   }
   return newArray
 }
+
+export const quizCategory = Object.keys(QuizCategory).map((name) => {
+  return {
+    name,
+    value: QuizCategory[name as keyof typeof QuizCategory],
+  }
+})
+
+export const quizDifficulty = Object.keys(QuizDifficulty).map((name) => {
+  return {
+    name,
+    value: QuizDifficulty[name as keyof typeof QuizDifficulty],
+  }
+})
