@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+}
+
+.page-item {
+  border: 1px solid #e9ecef;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: lightgray;
+}

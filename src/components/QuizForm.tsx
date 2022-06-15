@@ -10,12 +10,13 @@ import {
   useColorModeValue,
   Select,
 } from '@chakra-ui/react'
+import { FC } from 'react'
 import { quizCategory, quizDifficulty } from '../lib/helper'
+import { QuizFormProps } from '../types/types'
 
-const QuizForm = () => {
+const QuizForm: FC<QuizFormProps> = ({ handleStart }) => {
   return (
     <Flex
-      minH="100vh"
       align="center"
       justify="center"
       bg={useColorModeValue('gray.50', 'gray.800')}
@@ -61,11 +62,12 @@ const QuizForm = () => {
             </FormControl>
             <Stack spacing={10}>
               <Button
-                bg="blue.400"
+                bg="green.400"
                 color="white"
                 _hover={{
-                  bg: 'blue.500',
+                  bg: 'green.600',
                 }}
+                onClick={handleStart}
               >
                 Start Game
               </Button>

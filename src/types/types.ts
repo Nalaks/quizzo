@@ -32,3 +32,16 @@ export enum QuizDifficulty {
   'Medium' = 'medium',
   'Hard' = 'hard',
 }
+
+export interface PaginatedItemsProps {
+  itemsPerPage: number
+  quizItems: Question[]
+}
+
+export interface CurrentItemsProps {
+  currentItems: any[] | null
+}
+
+export interface QuizFormProps {
+  handleStart: () => void
+}

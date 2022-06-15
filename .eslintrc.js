@@ -33,5 +33,6 @@ module.exports = {
     'no-console': 'off',
     'react/jsx-no-useless-fragment': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
+    'react-hooks/exhaustive-deps': 'off',
   },
 }
