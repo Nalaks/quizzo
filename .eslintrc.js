@@ -34,5 +34,6 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
     'react-hooks/exhaustive-deps': 'off',
+    'no-param-reassign': 'off',
   },
 }

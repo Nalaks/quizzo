@@ -5,6 +5,7 @@ export type Question = {
   incorrect_answers: string[]
   question: string
   type: string
+  answers: string[]
 }
 
 export interface QuizLayoutProps {
@@ -38,10 +39,16 @@ export interface PaginatedItemsProps {
   quizItems: Question[]
 }
 
-export interface CurrentItemsProps {
-  currentItems: any[] | null
+export interface QuizItemProps {
+  item: Question
+  index: number
+  length: number
 }
 
 export interface QuizFormProps {
   handleStart: () => void
+}
+
+export interface QuizItemsState {
+  value: Question[]
 }

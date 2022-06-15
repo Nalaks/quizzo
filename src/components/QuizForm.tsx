@@ -31,7 +31,7 @@ const QuizForm: FC<QuizFormProps> = ({ handleStart }) => {
           boxShadow="lg"
           p={8}
         >
-          <Stack spacing={4}>
+          <Stack spacing={8}>
             <FormControl id="numberOfQuestions">
               <FormLabel>Number of Questions</FormLabel>
               <Input type="number" />
@@ -60,18 +60,16 @@ const QuizForm: FC<QuizFormProps> = ({ handleStart }) => {
                 })}
               </Select>
             </FormControl>
-            <Stack spacing={10}>
-              <Button
-                bg="green.400"
-                color="white"
-                _hover={{
-                  bg: 'green.600',
-                }}
-                onClick={handleStart}
-              >
-                Start Game
-              </Button>
-            </Stack>
+            <Button
+              bg="green.400"
+              color="white"
+              _hover={{
+                bg: 'green.600',
+              }}
+              onClick={handleStart}
+            >
+              Start Game
+            </Button>
           </Stack>
         </Box>
       </Stack>

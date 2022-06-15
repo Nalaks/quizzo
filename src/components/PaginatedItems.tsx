@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { PaginatedItemsProps, Question } from '../types/types'
-import Items from './CurrentItems'
+// eslint-disable-next-line import/no-named-as-default
+import QuizItem from './QuizItem'
 import '../pagination.css'
 
 const PaginatedItems: FC<PaginatedItemsProps> = ({
@@ -25,7 +26,15 @@ const PaginatedItems: FC<PaginatedItemsProps> = ({
 
   return (
     <>
-      <Items currentItems={currentItems} />
+      {currentItems &&
+        currentItems.map((item) => (
+          <QuizItem
+            key={item.question}
+            item={item}
+            index={itemOffset + 1}
+            length={pageCount}
+          />
+        ))}
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from './redux/hooks'
 import fetchQuizQuestions from './lib/fetcher'
 import QuizLayout from './components/QuizLayout'
 import QuizForm from './components/QuizForm'
@@ -8,11 +9,13 @@ import LoadingSpinner from './components/LoadingSpinner'
 const App = () => {
   const [loading, setLoading] = useState(false)
   const [startQuiz, setStartQuiz] = useState(false)
-  const [quiz, setQuiz] = useState()
+  // const [quiz, setQuiz] = useState()
+  const quiz = useAppSelector((state) => state.quizItems.value)
+  const dispatch = useAppDispatch()
 
   const handleStart = async () => {
     setLoading(true)
-    setQuiz(await fetchQuizQuestions())
+    dispatch(await fetchQuizQuestions())
     setStartQuiz(true)
     setLoading(false)
   }
