@@ -1,32 +1,32 @@
-import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from './redux/hooks'
+import { FC, useState } from 'react'
+import { useQuery } from 'react-query'
 import fetchQuizQuestions from './lib/fetcher'
-import QuizLayout from './components/QuizLayout'
 import QuizForm from './components/QuizForm'
 import PaginatedItems from './components/PaginatedItems'
 import LoadingSpinner from './components/LoadingSpinner'
+import { Question } from './types/types'
+import ErrorMessage from './components/ErrorMessage'
 
-const App = () => {
-  const [loading, setLoading] = useState(false)
+const App: FC = () => {
   const [startQuiz, setStartQuiz] = useState(false)
-  // const [quiz, setQuiz] = useState()
-  const quiz = useAppSelector((state) => state.quizItems.value)
-  const dispatch = useAppDispatch()
+  const { isLoading, isError, data } = useQuery<Question[], Error>(
+    'quizItems',
+    fetchQuizQuestions,
+  )
 
   const handleStart = async () => {
-    setLoading(true)
-    dispatch(await fetchQuizQuestions())
     setStartQuiz(true)
-    setLoading(false)
+    console.log(data)
   }
   return (
-    <QuizLayout>
-      {!startQuiz && !loading && <QuizForm handleStart={handleStart} />}
-      {loading && <LoadingSpinner />}
-      {startQuiz && quiz && (
-        <PaginatedItems itemsPerPage={1} quizItems={quiz} />
+    <>
+      {!startQuiz && !isLoading && <QuizForm handleStart={handleStart} />}
+      {isLoading && <LoadingSpinner />}
+      {isError && <ErrorMessage />}
+      {startQuiz && data && (
+        <PaginatedItems itemsPerPage={1} quizItems={data} />
       )}
-    </QuizLayout>
+    </>
   )
 }
 

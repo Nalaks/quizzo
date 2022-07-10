@@ -52,3 +52,9 @@ export interface QuizFormProps {
 export interface QuizItemsState {
   value: Question[]
 }
+
+export interface IQuery {
+  isLoading: boolean
+  isError: boolean
+  data: Question[]
+}

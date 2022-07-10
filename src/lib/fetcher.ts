@@ -1,11 +1,8 @@
 import { Question } from '../types/types'
 import { shuffle } from './helper'
 
-const fetchQuizQuestions = async (
-  amount: number = 10,
-  difficulty: string = 'easy',
-  category: number = 10,
-) => {
+const fetchQuizQuestions = async (params: any): Promise<Question[]> => {
+  const { category = 99, difficulty = 'easy', amount = 10 } = params
   let endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
   if (difficulty === 'any' && category === 99) {
     endpoint = `https://opentdb.com/api.php?amount=${amount}&type=multiple`

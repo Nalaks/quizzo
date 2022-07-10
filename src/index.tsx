@@ -1,22 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
-import { Provider } from 'react-redux'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import theme from './theme'
-import store from './redux/store'
+import theme from './lib/theme'
+import QuizLayout from './components/QuizLayout'
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <ChakraProvider theme={theme}>
-    <React.StrictMode>
-      <Provider store={store}>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <App />
-      </Provider>
-    </React.StrictMode>
-  </ChakraProvider>,
+        <QuizLayout>
+          <App />
+        </QuizLayout>
+      </ChakraProvider>
+    </QueryClientProvider>
+  </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function

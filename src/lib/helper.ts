@@ -1,6 +1,6 @@
 import { QuizCategory, QuizDifficulty } from '../types/types'
 
-export const shuffle = (array: any[]) => {
+export const shuffle = (array: string[]) => {
   const newArray = [...array]
   for (let i = newArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
